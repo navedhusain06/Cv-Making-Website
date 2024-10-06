@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block samecontent %}{% endblock %}
+
+{% block start %}
+<div class="text-center mt-4">
+    <a href="{% url 'download_cv' cv_id %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Download CV as PDF
+    </a>
+    <p>ID: {{ cv_id }}</p>  <!-- Add this line to debug -->
+</div>
+
+<div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">Your CV</h1>
+
+    <div class="flex items-center mb-4">
+        <div class="w-24 h-24 rounded-full overflow-hidden mr-4">
+            <img src="{{ photo.url }}" alt="User Photo" class="object-cover w-full h-full">
+        </div>
+        <div>
+            <h2 class="text-2xl font-semibold text-gray-800">Full Name: {{ full_name }}</h2>
+            <p class="text-sm text-gray-600">Contact: {{ contact }}</p>
+            <p class="text-sm text-gray-600">Email: {{ email }}</p>
+            <p class="text-sm text-gray-600">Address: {{ address }}</p>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <h3 class="text-lg font-semibold text-gray-700">Languages</h3>
+        <p class="text-gray-600">{{ languages }}</p>
+    </div>
+
+    <div class="mb-4">
+        <h3 class="text-lg font-semibold text-gray-700">Skills</h3>
+        <p class="text-gray-600">{{ skills }}</p>
+    </div>
+
+    <div class="mb-4">
+        <h3 class="text-lg font-semibold text-gray-700">Education</h3>
+        <p class="text-gray-600">{{ education }}</p>
+    </div>
+
+    <div class="mb-4">
+        <h3 class="text-lg font-semibold text-gray-700">Experience</h3>
+        <p class="text-gray-600">{{ experience }}</p>
+    </div>
+
+    <div class="mb-4">
+        <h3 class="text-lg font-semibold text-gray-700">Social Media</h3>
+        <p class="text-gray-600">{{ social_media }}</p>
+    </div>
+</div>
+{% endblock %}

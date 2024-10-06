@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home Page | {% endblock %}
+
+<link rel="stylesheet" href="{% static "css/home.css" %}">
+
+
+
+{% block start %}
+
+
+
+{% comment %} SECTION 3 {% endcomment %}
+
+<p class='text-center text-4xl fo1 font-bold text-gray-700 ml-44 mr-44 mt-12'>Use a Genius Cover Letter Template</p>
+<div class="shadow-2xl bg-slate-200 mt-8 py-4">
+<div class="flex justify-around h-[350px] mt-16 ">
+    <img src="{% static "images/cvv1.png" %}" class="cv shadow-2xl" alt="">
+    <img src="{% static "images/cvv2.png" %}" class='cv shadow-2xl' alt="">
+    <img src="{% static "images/cvv3.png" %}" class='cv shadow-2xl' alt="">
+</div>
+<div class="flex justify-around h-[350px] mt-5">
+    <img src="{% static "images/cvv4.jpg" %}" class="cv shadow-2xl" alt="">
+    <img src="{% static "images/cvv5.jpg" %}" class='cv shadow-2xl' alt="">
+    <img src="{% static "images/cvv6.jpg" %}" class='cv shadow-2xl' alt="">
+</div>
+<div class="flex justify-around h-[350px] mt-5">
+    <img src="{% static "images/cvv7.jpg" %}" class="cv shadow-2xl" alt="">
+    <img src="{% static "images/cvv8.jpg" %}" class='cv shadow-2xl' alt="">
+    <img src="{% static "images/cvv9.jpg" %}" class='cv shadow-2xl' alt="">
+</div>
+</div>
+{% endblock %}

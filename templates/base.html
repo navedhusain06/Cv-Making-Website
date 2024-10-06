@@ -1,0 +1,98 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}
+        
+        {% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        {% comment %} BOOTSTRAP CDN FILE {% endcomment %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        {% comment %} TAILWIND CSS FILE {% endcomment %}
+        {% tailwind_css %}
+        {% comment %} CUSTOM CSS FILE {% endcomment %}
+        {% comment %} GOOGLE FONTS {% endcomment %}
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=SUSE:wght@100..800&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=SUSE:wght@100..800&display=swap');
+            </style>
+            {% comment %} FONT AWESOM {% endcomment %}
+            <script src="https://kit.fontawesome.com/ede5d4943b.js" crossorigin="anonymous"></script>
+            
+</head>
+<body>
+    <div class="custom-container">
+    
+    
+    <div class="flex justify-between items-center ">
+        <p class='text-3xl fo1 text-green-400'><a href="{% url "homeNm" %}">Cv<span class='font-extrabold'>Maker</span></a></p>
+        <ul class='flex gap-10 fo text-gray-600 text-xl font-semibold ml-64'>
+            <li><a href="#">Builder</a></li>
+            <li><a href="#">Resumes</a></li>
+            <li><a href="#">Cover Letters</a></li>
+            <li><a href="#">CVs</a></li>
+            <li><a href="#">Resources</a></li>
+                
+            
+        </ul>
+        <span>
+            {% if user.is_authenticated %}
+            <a href={% url "logoutNm" %} type='submit' class='border bg-green-400 rounded-md text-xl text-white p-2 px-4'>Log out</a>
+
+            {% else %}
+        <a href={% url "registerNm" %} type='submit' class='border bg-green-400 rounded-md text-xl text-white p-2 px-4'>Registration</a>
+        <a href='{% url "loginNm" %}' type='submit' class='border-2 p-2 text-xl rounded'>Login</a>
+        {% endif %}
+    </span>
+                            
+    </div>
+{% block samecontent %}
+
+{% comment %} SECTION 1 {% endcomment %}
+
+<div class='text-center mt-24 text-5xl fo1 font-bold text-gray-700'>Resume Templates</div>
+<p class='text-center mt-3 fo1 text-gray-600 leading-relaxed tracking-wide'>Need a job? Our huge range of free resume templates can help you. Simply choose your favorite<br> template, download it directly to Word or open it in Google Docs, and fill it out. We also provide a<br> copy-paste resume template that quickly walks you through each step of making a resume.</p>
+
+<div class="text-center mt-14">
+    {% if user.is_authenticated %}
+    <a href='{% url "cvTemplateNm" %}' class='bg-green-400 py-2 px-8 rounded-lg text-white text-2xl fo'>Build My Resume</a>
+    {% else %}
+    <a href='{% url "loginNm" %}' class='bg-green-400 py-2 px-8 rounded-lg text-white text-2xl fo'>Build My Resume</a>
+
+    {% endif %}
+</div>
+
+{% comment %} SECTION 2 {% endcomment %}
+
+{% comment %} <div class="mt-16">
+    <ul class='flex justify-center gap-28 fo2'>
+        <li><a href="{% url "homeNm" %}" class='hover:text-green-400 active:text-green-400 '><i class="fa-solid fa-file pr-3"></i>Resume</a></li>
+        <li><a href="{% url "homeSecondNm" %}" class='hover:text-green-400 active:text-green-400' id="coverLetterLink"><i class="fa-solid fa-pager pr-3"></i>Cover Letter</a></li>
+    </ul>
+</div>
+<hr class='mt-4' id="highlightLine"> {% endcomment %}
+
+<div class="mt-16">
+    <ul class='flex justify-center gap-28 fo2'>
+        <li><a href="{% url 'homeNm' %}" class='hover:text-green-400 '><i class="fa-solid fa-file pr-3"></i>Resume</a></li>
+        <li><a href="{% url 'homeSecondNm' %}" id="coverLetterLink" class='hover:text-green-400'><i class="fa-solid fa-pager pr-3"></i>Cover Letter</a></li>
+    </ul>
+</div>
+<hr id="highlightLine" class='mt-4' >
+
+{% endblock %}
+   
+    {% block start %}
+    
+    {% endblock %}
+</div>
+<script src='{% static "js/home.js" %}'></script>
+</body>
+</html>

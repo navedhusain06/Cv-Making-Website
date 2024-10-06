@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block samecontent %}{% endblock %}
+
+{% block start %}
+<div class="col-6 mx-auto border p-3 shadow-2xl rounded-xl mt-5">
+  <h1 class='text-center'>Login Form</h1>
+
+  
+<form class="mt-5" method='post'>
+  {% csrf_token %}
+  {% include "alert.html" %}
+    <div class="mb-3">
+      <label  class="form-label">Email address</label>
+      <input type="email" class="form-control" name="email" placeholder='abc@gmail.com' required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" placeholder='********' required>
+    </div>
+    
+    <button type="submit" class="btn btn-success">Login</button>
+  </form>
+</div>
+{% endblock %}

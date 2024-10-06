@@ -1,0 +1,33 @@
+.fo{
+    font-family: "SUSE";
+}
+.fo1{
+    font-family: "Poppins";
+}
+.fo2{
+    font-family: "Rubik";
+}
+
+.custom-container{
+    margin-inline: auto;
+    max-width: 1250px;
+}
+
+
+
+#coverLetterLink.active {
+    color: green; /* Set the active color */
+}
+
+#highlightLine.active {
+    background-color: green; /* Set the line color */
+    height: 2px;
+}
+
+hr {
+    transition: background-color 0.3s, height 0.3s; /* Smooth transition */
+}
+
+
+
+

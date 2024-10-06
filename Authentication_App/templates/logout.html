@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block samecontent %}{% endblock %}
+
+{% block start %}
+
+<h1>Are you sure you want to logout</h1>
+<form method="post">
+    {% csrf_token %}
+<button type='submit' class='btn btn-danger' >Yes</button>
+</form>
+<a class='btn btn-success' href="{% url "homeNm" %}">No</a>
+
+
+{% endblock %}
