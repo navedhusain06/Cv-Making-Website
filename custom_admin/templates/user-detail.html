@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="flex min-h-screen">
+
+        <!-- Sidebar -->
+        <div class="bg-gray-800 text-gray-100 w-64 space-y-6 py-7 px-2">
+            <!-- Logo -->
+            <a href="#" class="text-white flex items-center space-x-2 px-4">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 0L2 4v8l8 4 8-4V4l-8-4zM2 12l8 4 8-4M10 16v4M4 9v4l6 3m6-3l6-3V6l-6-3-6 3M4 6l6-3M10 0v4"></path>
+                </svg>
+                <span class="text-2xl font-extrabold">My Dashboard</span>
+            </a>
+
+            <!-- Navigation -->
+            <nav>
+                <a href="{% url "custom_dashboard" %}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Dashboard</a>
+                <a href="{% url "cv-detail" %}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Cv</a>
+                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Profile</a>
+                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Notifications</a>
+                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Logout</a>
+            </nav>
+        </div>
+
+        <!-- Content Area -->
+        <div class="flex-1 p-6">
+            <!-- Header -->
+            <header class="flex justify-between items-center pb-6">
+                <h2 class="text-2xl font-semibold text-gray-700">User Details</h2>
+                <div class="flex items-center space-x-4">
+                    <a href='{% url 'update-user' user_id=user_obj.id %}' class="bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-300">Update</a>
+                    <a href='{% url 'delete-user' user_id=user_obj.id %}' class="bg-red-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-500">Delete</a>
+                </div>
+            </header>
+
+            <!-- Dashboard Cards -->
+           
+
+            <!-- Table Section -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-700">Users</h3>
+                </div>
+                <div class="p-6 overflow-x-auto">
+                    <table class="w-full table-auto">
+                      
+                        <tbody class="text-gray-600 text-sm font-light">
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap font-semibold">Full Name:</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ user_obj.fullName }}</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap font-semibold">Photo:</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    {% if user_obj.photo %}
+            <img src="{{ user_obj.photo.url }}" alt="User Photo" class="h-20 w-20 rounded-full">
+        
+        {% else %}
+            <span>No photo available</span>
+        {% endif %}
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap font-semibold">Contact Number:</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ user_obj.contactNumber }}</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap font-semibold">Email:</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ user_obj.email }}</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap font-semibold">Address:</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ user_obj.address }}</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap font-semibold">Social Media Links:</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ user_obj.socialMediaLinks }}</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap font-semibold">Languages:</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ user_obj.languages }}</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap font-semibold">Skills:</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ user_obj.skills }}</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap font-semibold">Education:</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ user_obj.education }}</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap font-semibold">Experience:</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ user_obj.experience }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superuser Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-700 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-sm">
+        <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Admin Login</h2>
+        
+        {% if error %}
+            <div class="bg-red-100 text-red-600 p-3 rounded mb-4 text-center">
+                {{ error }}
+            </div>
+        {% endif %}
+        
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            
+            <!-- Username -->
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-600">Username</label>
+                <input type="text" id="username" name="username" 
+                       class="mt-2 block w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-indigo-400 focus:outline-none" 
+                       placeholder="Enter username" required>
+            </div>
+            
+            <!-- Password -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
+                <input type="password" id="password" name="password" 
+                       class="mt-2 block w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-indigo-400 focus:outline-none" 
+                       placeholder="Enter password" required>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" 
+                    class="w-full bg-indigo-500 text-white py-2 rounded-md hover:bg-indigo-600 transition">
+                Login
+            </button>
+        </form>
+        
+        <!-- Footer -->
+        {% comment %} <p class="text-center text-sm text-gray-500 mt-6">
+            Don't have a account?
+            <a href="{% url "register-superuser" %}" class="text-indigo-500 hover:underline">Register</a>
+        </p> {% endcomment %}
+    </div>
+</body>
+</html>

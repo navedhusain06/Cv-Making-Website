@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'Home_App',
+    'custom_admin',
 ]
 
 MIDDLEWARE = [
